@@ -1,4 +1,6 @@
-﻿namespace TrolleyApi.User
+﻿using Microsoft.Extensions.Configuration;
+
+namespace TrolleyApi.User
 {
     public interface IUserService
     {
@@ -7,9 +9,16 @@
 
     public class UserService : IUserService
     {
+        private readonly IConfiguration _configuration;
+
+        public UserService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public UserResponse Get()
         {
-            return new UserResponse("Ram Anam", "dab78cfc-6bd8-428f-be75-19be7bd38643");
+            return new UserResponse("Ram Anam", _configuration["UserToken"]);
         }
     }
 }

@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrolleyApi.ApiProxies;
+using TrolleyApi.Sort;
 using TrolleyApi.User;
 
 namespace TrolleyApi
@@ -28,7 +30,25 @@ namespace TrolleyApi
             services.AddControllers();
 
             services
-                .AddTransient<IUserService, UserService>();
+                .AddTransient<IUserService, UserService>()
+                .AddTransient<IProductSortService, SortByPrice>()
+                .AddTransient<IProductSortService, SortByName>();
+
+            services
+                .AddTransient<ISortService>(sp => 
+                {
+                    var sortServices = sp.GetServices(typeof(IProductSortService)) 
+                        as IEnumerable<IProductSortService>;
+                    var productRepository = sp.GetRequiredService<IProductsRepository>();
+                    return new SortService(Configuration, productRepository, sortServices.ToList());
+                });
+
+            services
+                .AddHttpClient("ProductsRepository", c =>
+                {
+                    c.BaseAddress = new Uri("http://dev-wooliesx-recruitment.azurewebsites.net/api/resource");
+                })
+                .AddTypedClient(c => Refit.RestService.For<IProductsRepository>(c));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
