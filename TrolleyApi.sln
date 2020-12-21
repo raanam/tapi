@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrolleyApi", "TrolleyApi\TrolleyApi.csproj", "{888583B7-526A-42EE-AC96-B254DF5B3F2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrolleyApi.Tests", "TrolleyApi.Tests\TrolleyApi.Tests.csproj", "{B45FC135-E36A-4EF4-BFDC-1BB5157B3E2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{888583B7-526A-42EE-AC96-B254DF5B3F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888583B7-526A-42EE-AC96-B254DF5B3F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888583B7-526A-42EE-AC96-B254DF5B3F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888583B7-526A-42EE-AC96-B254DF5B3F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45FC135-E36A-4EF4-BFDC-1BB5157B3E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45FC135-E36A-4EF4-BFDC-1BB5157B3E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45FC135-E36A-4EF4-BFDC-1BB5157B3E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45FC135-E36A-4EF4-BFDC-1BB5157B3E2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E950E904-6A64-492C-92EE-D87E5B43893A}
+	EndGlobalSection
+EndGlobal
