@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrolleyApi.ApiProxies;
 using TrolleyApi.Sort;
+using TrolleyApi.TrolleyTotal;
 using TrolleyApi.User;
 
 namespace TrolleyApi
@@ -33,7 +34,10 @@ namespace TrolleyApi
                 .AddTransient<IUserService, UserService>()
                 .AddTransient<IProductSortService, SortByPrice>()
                 .AddTransient<IProductSortService, SortByName>()
-                .AddTransient<IProductSortService, SortByRecommendation>();
+                .AddTransient<IProductSortService, SortByRecommendation>()
+                .AddTransient<ISpecialsProcessor, SpecialsProcessor>()
+                .AddTransient<INormalPriceProcessor, NormalPriceProcessor>()
+                .AddTransient<ITrolleyTotalCalculatorService, TrolleyTotalCalculatorService>();
 
             services
                 .AddTransient<ISortService>(sp => 
