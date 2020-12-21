@@ -32,7 +32,8 @@ namespace TrolleyApi
             services
                 .AddTransient<IUserService, UserService>()
                 .AddTransient<IProductSortService, SortByPrice>()
-                .AddTransient<IProductSortService, SortByName>();
+                .AddTransient<IProductSortService, SortByName>()
+                .AddTransient<IProductSortService, SortByRecommendation>();
 
             services
                 .AddTransient<ISortService>(sp => 
@@ -43,12 +44,21 @@ namespace TrolleyApi
                     return new SortService(Configuration, productRepository, sortServices.ToList());
                 });
 
+            var resourceApiBaseUrl = new Uri(Configuration["ResourceApiBaseUrl"]);
+
             services
                 .AddHttpClient("ProductsRepository", c =>
                 {
-                    c.BaseAddress = new Uri("http://dev-wooliesx-recruitment.azurewebsites.net/api/resource");
+                    c.BaseAddress = resourceApiBaseUrl;
                 })
                 .AddTypedClient(c => Refit.RestService.For<IProductsRepository>(c));
+
+            services
+                .AddHttpClient("ShopperHistoryRepository", c =>
+                {
+                    c.BaseAddress = resourceApiBaseUrl;
+                })
+                .AddTypedClient(c => Refit.RestService.For<IShopperHistoryRepository>(c));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
